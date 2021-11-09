@@ -13,14 +13,21 @@ public class StudentConfig {
     CommandLineRunner commandLineRunner(StudentRepository studentRepository){
         return args -> {
             Student kendrick = new Student(
-                    1L,
                     "Kendrick",
                     "truong",
                     "72 Main Street W",
                     "0913808375",
                     "s3814172@rmit.edu.vn"
             );
-            studentRepository.saveAll(List.of(kendrick));
+
+            Student andrew = new Student(
+                    "Andrew",
+                    "Le",
+                    "123 Le Loi Street",
+                    "0975324123",
+                    "s3820098@rmit.edu.vn"
+            );
+            studentRepository.saveAll(List.of(kendrick,andrew));
         };
     }
 }

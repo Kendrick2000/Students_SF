@@ -2,8 +2,13 @@ package com.example.demo.student;
 
 import javax.persistence.*;
 
-@Entity
-@Table
+@Entity(name = "Student")
+@Table(
+        name = "student",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "student_email_unique", columnNames = "email")
+        }
+)
 public class Student {
 
     @Id
@@ -17,23 +22,44 @@ public class Student {
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
     )
+
+    @Column(
+            name ="id",
+            updatable = false
+    )
     private Long id;
+    @Column(
+            name = "first_name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String name;
+    @Column(
+            name = "last_name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String parentName;
+    @Column(
+            name = "address",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String address;
+    @Column(
+            name = "phone_num",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String phoneNum;
+    @Column(
+            name = "email",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String email;
 
     public Student() {
-    }
-
-    public Student(Long id, String name, String parentName, String address, String phoneNum, String email) {
-        this.id = id;
-        this.name = name;
-        this.parentName = parentName;
-        this.address = address;
-        this.phoneNum = phoneNum;
-        this.email = email;
     }
 
     public Student(String name, String parentName, String address, String phoneNum, String email) {
