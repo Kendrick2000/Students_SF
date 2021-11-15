@@ -27,7 +27,14 @@ public class StudentConfig {
                     "0975324123",
                     "s3820098@rmit.edu.vn"
             );
-            studentRepository.saveAll(List.of(kendrick,andrew));
+            Student huy = new Student(
+                    "Huy",
+                    "Nguyen",
+                    "32 Bach Dang",
+                    "019231289",
+                    "s3786128@rmit.edu.vn"
+            );
+            studentRepository.saveAll(List.of(kendrick,andrew,huy));
         };
     }
 }

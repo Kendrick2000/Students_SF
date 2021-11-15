@@ -35,6 +35,16 @@ public class StudentController {
         return studentService.getStudentByEmail(studentEmail);
     }
 
+    @GetMapping(path = "{studentName}")
+    public Optional<Student> getStudentByName(@PathVariable("studentName") String studentName){
+        return studentService.getStudentByName(studentName);
+    }
+
+    @GetMapping(path = "{studentParentName")
+    public Optional<Student> getStudentByParentName(@PathVariable("studentParentName") String studentParentName){
+        return studentService.getStudentByParentName(studentParentName);
+    }
+
     @PostMapping
     public void registerNewStudent(@RequestBody Student student){
         studentService.addNewStudent(student);
@@ -50,8 +60,10 @@ public class StudentController {
     public void updateStudent(
             @PathVariable("studentId") Long studentId,
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) String email,
-            @RequestParam(required = false) String parentName){
-        studentService.updateStudent(studentId, name, parentName , email);
+            @RequestParam(required = false) String parentName,
+            @RequestParam(required = false) String address,
+            @RequestParam(required = false) String phoneNum,
+            @RequestParam(required = false) String email){
+        studentService.updateStudent(studentId, name, parentName , address , phoneNum , email);
     }
 }
